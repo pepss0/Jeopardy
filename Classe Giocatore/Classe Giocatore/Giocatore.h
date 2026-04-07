@@ -2,15 +2,20 @@
 #include <string>
 using namespace std;
 
-class Giocatore
-{
+class Giocatore {
 private:
 
-	int punteggio;
-	string nome;
+    string nome;
+    int punteggio;
 
 public:
-	Giocatore();
-	Giocatore(string nome, int punteggio);
-	string toString();
+
+    Giocatore();
+    Giocatore(string nomeiniziale);
+    void aggiungiPunti(int puntiAggiunti);
+    void resettaPunteggio();
+    string getNome();
+    int getPunteggio();
+    string toString();
+
 };
