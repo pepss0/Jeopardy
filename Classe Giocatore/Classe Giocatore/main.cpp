@@ -1,39 +1,21 @@
 #include <iostream>
 #include "Giocatore.h"
-
 using namespace std;
+int main() {
+    const int MAX_GIOCATORI = 4;
+    Giocatore squadra[MAX_GIOCATORI] = {
+        Giocatore("Mario"),
+        Giocatore("Luigi"),
+        Giocatore("Peach")
+    };
 
-const int MAXEL = 5;
+    squadra[0].aggiungiPunti(10);
+    squadra[1].aggiungiPunti(25);
 
-void main() {
+    cout << "--- CLASSIFICA ---" << endl;
+    for (int i = 0; i < MAX_GIOCATORI; i++) {
+        cout << squadra[i].toString() << endl;
+    }
 
-	int punti = 0;
-	string nome = "";
-	int numeroDiGiocatori = 0;
-
-	cout << "quanti giocatori giocano?" << endl;
-	cin >> numeroDiGiocatori;
-	
-	Giocatore giocatori[MAXEL];
-
-	for (int i = 0; i < numeroDiGiocatori; i++)
-	{
-		cout << "Inserisci il tuo nome: " << endl;
-		cin >> nome;
-
-		giocatori[i] = Giocatore(nome, punti);
-
-	}
-		
-	system("cls");
-
-	for (int i = 0; i < 25; i++)
-	{
-		cout << endl;
-	}
-
-	for (int i = 0; i < numeroDiGiocatori; i++)
-	{
-		cout << giocatori[i].toString();
-	}
+    return 0;
 }
