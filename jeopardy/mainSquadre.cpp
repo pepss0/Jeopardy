@@ -10,7 +10,7 @@ int main()
 	string nome, squadra_cercata;
 	do
 	{
-		system("CLS");
+		system("CLS");//cancella lo schermo
 		cout << "cosa vuoi fare ?" << endl;
 		cout << "1) Aggiungere una squadra" << endl;
 		cout << "2) Togliere una squadra" << endl;
