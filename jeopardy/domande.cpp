@@ -8,6 +8,8 @@ using namespace std;
 Domanda::Domanda() {
     punteggio = 0;
     giaScelta = true; // Una domanda "vuota" non deve essere giocabile
+    testo="";
+    rispostaCorretta="";
 }
 
 Domanda::Domanda(string t, string r, int p) {
@@ -28,33 +30,13 @@ void Domanda::mostraDomanda() {
     }
 }
 
+void Domanda::mostraRisposta()
+{
+    cout << "--- RISPOSTA DA " << punteggio << " PUNTI ---" << endl;
+    cout << rispostaCorretta << endl;
+}
+
 int Domanda::getPunteggio() {
     return punteggio;
 }
 
-// --- Implementazione di CATEGORIA ---
-
-Categoria::Categoria(string n) {
-    nome = n;
-    numeroDomande = 0; // Iniziamo da zero domande caricate
-}
-
-void Categoria::aggiungiDomanda(Domanda d) {
-    if (numeroDomande < 5) {
-        listaDomande[numeroDomande] = d;
-        numeroDomande++;
-    }
-    else {
-        cout << "Errore: Categoria piena!" << endl;
-    }
-}
-
-void Categoria::selezionaCasella(int puntiSelezionati) {
-    for (int i = 0; i < numeroDomande; i++) {
-        if (listaDomande[i].getPunteggio() == puntiSelezionati) {
-            listaDomande[i].mostraDomanda();
-            
-        }
-    }
-
-}

@@ -18,19 +18,8 @@ public:
     Domanda(string t,string r, int p);
 
     void mostraDomanda();
+    void mostraRisposta();
     int getPunteggio();
 };
 
-// --- CLASSE CATEGORIA ---
-class Categoria {
-private:
-   string nome;
-    Domanda listaDomande[5]; // Array fisso invece del vector
-    int numeroDomande;       // Contatore interno
-
-public:
-    Categoria(string n);
-    void aggiungiDomanda(Domanda d);
-    void selezionaCasella(int puntiSelezionati);
-};
 

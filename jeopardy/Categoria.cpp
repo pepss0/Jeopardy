@@ -42,3 +42,30 @@ string Categoria::toString()
 	}
 	return s;
 }
+
+// --- Implementazione di CATEGORIA ---
+
+Categoria::Categoria(string n) {
+	nome = n;
+	numeroDomande = 0; // Iniziamo da zero domande caricate
+}
+
+void Categoria::aggiungiDomanda(Domanda d) {
+	if (numeroDomande < 5) {
+		listaDomande[numeroDomande] = d;
+		numeroDomande++;
+	}
+	else {
+		cout << "Errore: Categoria piena!" << endl;
+	}
+}
+
+void Categoria::selezionaCasella(int puntiSelezionati) {
+	for (int i = 0; i < numeroDomande; i++) {
+		if (listaDomande[i].getPunteggio() == puntiSelezionati) {
+			listaDomande[i].mostraDomanda();
+
+		}
+	}
+
+}
