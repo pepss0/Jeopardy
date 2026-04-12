@@ -4,7 +4,7 @@
 
 using namespace std;
 
-// --- Implementazione di DOMANDA ---
+// --- Implementazione di RISPOSTA ---
 
 Risposta::Risposta() {
     risposta_fornita = "";
