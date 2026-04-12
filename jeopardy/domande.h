@@ -1,4 +1,3 @@
-
 #define DOMANDE_H
 #include<iostream>
 #include <string>

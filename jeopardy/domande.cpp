@@ -39,4 +39,3 @@ void Domanda::mostraRisposta()
 int Domanda::getPunteggio() {
     return punteggio;
 }
-
