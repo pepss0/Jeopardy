@@ -3,6 +3,10 @@
 Squadre::Squadre() {
     punteggio = 0;
     nome = "";
+	this->punteggio[0] = 0;
+	this->nome[0] = "";
+	this->punteggio[0] = 0;
+	this->nome[0] = "";
 }
 
 void Squadre::setNome(string n) {
