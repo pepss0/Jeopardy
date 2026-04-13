@@ -1,6 +1,8 @@
 #pragma once
 #include<iostream>
 #include <string>
+#include "Squadre.h"
+#include "domande.h"
 using namespace std;
 
 // --- CLASSE RISPOSTA ---
@@ -12,7 +14,7 @@ public:
     Risposta();
     Risposta(string r);
     void leggiRispota();
-    bool verificaRisposta(Domanda d)
+    void verificaRisposta(Domanda d, Squadre s);
 };
 
 

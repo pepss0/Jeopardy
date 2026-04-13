@@ -15,17 +15,20 @@ Risposta::Risposta(string r) {
 }
 
 void Risposta::leggiRispota() {
-    cout << "INSERISCI RISPOTA" << endl;
+    cout << "INSERISCI RISPOSTA" << endl;
     cin >> risposta_fornita;
 }
 
-bool Risposta::verificaRisposta(Domanda d)
+void Risposta::verificaRisposta(Domanda d, Squadre s)
 {
-    bool risposta = false;
-    if (risposta_fornita == d.mostraRisposta())
+    if (risposta_fornita == d.mostraRisposta())//secondo il principio Tell Don't Ask questo andrebbe fatto nella classe Domanda
     {
-        cout << rispostaCorretta << endl;
-        risposta = true;
+        cout << "risposta Corretta!!!" << endl;
+        s.modificaPunteggio(d.getPunteggio(), true);
     }
-    return risposta;
+    else
+    {
+        cout << "risposta Sbagliata!!!" << endl;
+        s.modificaPunteggio(d.getPunteggio(), false);
+    }
 }
