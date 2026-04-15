@@ -1,4 +1,4 @@
-#define DOMANDE_H
+#pragma once
 #include<iostream>
 #include <string>
 using namespace std;
@@ -10,15 +10,16 @@ private:
     string rispostaCorretta;
     int punteggio;
     bool giaScelta;
+    string rispostaCorretta;
 
 public:
-    // Costruttore di default necessario per l'array
     Domanda();
     Domanda(string t,string r, int p);
 
     void mostraDomanda();
     void mostraRisposta();
     int getPunteggio();
+    string getRispostaCorretta();
 };
 
 

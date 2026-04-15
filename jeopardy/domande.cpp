@@ -39,3 +39,8 @@ void Domanda::mostraRisposta()
 int Domanda::getPunteggio() {
     return punteggio;
 }
+
+string Domanda::getRispostaCorretta()
+{
+    return rispostaCorretta;
+}

@@ -19,9 +19,9 @@ void Risposta::leggiRispota() {
     cin >> risposta_fornita;
 }
 
-void Risposta::verificaRisposta(Domanda d, Squadre s)
+void Risposta::verificaRisposta(Domanda d, Squadre& s)
 {
-    if (risposta_fornita == d.mostraRisposta())//secondo il principio Tell Don't Ask questo andrebbe fatto nella classe Domanda
+    if (risposta_fornita == d.getRispostaCorretta())
     {
         cout << "risposta Corretta!!!" << endl;
         s.modificaPunteggio(d.getPunteggio(), true);
