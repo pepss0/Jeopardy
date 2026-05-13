@@ -14,7 +14,7 @@ public:
     Domanda();
     Domanda(string t);
 
-    void mostraDomanda();
+    string mostraDomanda();
 };
 
 
