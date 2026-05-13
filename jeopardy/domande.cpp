@@ -4,7 +4,7 @@
 using namespace std;
 
 Domanda::Domanda() {
-    giaScelta = true; 
+    giaScelta = false; 
     testo="";
 }
 
@@ -13,13 +13,14 @@ Domanda::Domanda(string t) {
     giaScelta = false;
 }
 
-int Domanda::mostraDomanda() {
+string Domanda::mostraDomanda() {
     if (giaScelta==true) {
-       return 0;
+       return "";
     }
     else {
-        return testo;
         giaScelta=true;
+        return testo;
+      
     }
 }
 
