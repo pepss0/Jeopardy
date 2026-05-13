@@ -8,7 +8,7 @@ Domanda::Domanda() {
     testo="";
 }
 
-Domanda::Domanda(string t, string r, int p) {
+Domanda::Domanda(string t) {
     testo = t;
     giaScelta = false;
 }
