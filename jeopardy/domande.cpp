@@ -3,44 +3,24 @@
 
 using namespace std;
 
-// --- Implementazione di DOMANDA ---
-
 Domanda::Domanda() {
-    punteggio = 0;
-    giaScelta = true; // Una domanda "vuota" non deve essere giocabile
+    giaScelta = false; 
     testo="";
-    rispostaCorretta="";
 }
 
-Domanda::Domanda(string t, string r, int p) {
+Domanda::Domanda(string t) {
     testo = t;
-    rispostaCorretta = r;
-    punteggio = p;
     giaScelta = false;
 }
 
-void Domanda::mostraDomanda() {
-    if (giaScelta) {
-        cout << "[X] Casella gia' giocata o vuota!" << endl;
+string Domanda::mostraDomanda() {
+    if (giaScelta==true) {
+       return "";
     }
     else {
-        cout << "--- DOMANDA DA " << punteggio << " PUNTI ---" << endl;
-        cout << testo << endl;
-        giaScelta = true;
+        giaScelta=true;
+        return testo;
+      
     }
 }
 
-void Domanda::mostraRisposta()
-{
-    cout << "--- RISPOSTA DA " << punteggio << " PUNTI ---" << endl;
-    cout << rispostaCorretta << endl;
-}
-
-int Domanda::getPunteggio() {
-    return punteggio;
-}
-
-string Domanda::getRispostaCorretta()
-{
-    return rispostaCorretta;
-}

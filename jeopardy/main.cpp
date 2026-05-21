@@ -36,7 +36,8 @@ int main() {
     Domanda elenco[25];
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
-            elenco[(i * 5) + j] = Domanda("Domanda di " + nomiCategorie[i] + " valore " + to_string(valoriPunti[j]), "Risposta", valoriPunti[j]);
+            elenco[(i * 5) + j] = Domanda("Domanda di " + nomiCategorie[i] + " valore " + to_string(valoriPunti[j]));
+
         }
     }
 
@@ -68,7 +69,7 @@ int main() {
 
                 int posizione = (sceltaI * 5) + sceltaJ;
 
-                elenco[posizione].mostraDomanda();
+                cout << elenco[posizione].mostraDomanda() << endl;
 
                 Risposta risp;
                 risp.leggiRispota();
