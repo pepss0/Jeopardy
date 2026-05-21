@@ -20,10 +20,7 @@ int main() {
         nSquadre = MAX_SQUADRE;
     }
 
-    Concorrente partecipanti[MAX_SQUADRE] = {
-        Concorrente(""), Concorrente(""), Concorrente(""), Concorrente(""), Concorrente(""),
-        Concorrente(""), Concorrente(""), Concorrente(""), Concorrente(""), Concorrente("")
-    };
+    Concorrente partecipanti[MAX_SQUADRE];
 
     for (int i = 0; i < nSquadre; i++) {
         string nomeSquadra;
@@ -36,10 +33,10 @@ int main() {
     int valoriPunti[MAXEL] = { 200, 400, 600, 800, 1000 };
     Interfaccia tabellone(nomiCategorie, valoriPunti);
 
-    Domanda elenco[25];
+    Domanda elenco[5][5];
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
-            elenco[(i * 5) + j] = Domanda("Domanda di " + nomiCategorie[i] + " valore " + to_string(valoriPunti[j]));
+            elenco[i][j] = Domanda("Domanda di " + nomiCategorie[i] + " valore " + to_string(valoriPunti[j]));
         }
     }
 
