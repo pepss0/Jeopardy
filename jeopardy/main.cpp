@@ -2,7 +2,7 @@
 #include <string>
 #include "domande.h"
 #include "Interfaccia.h"
-#include "Squadre.h"
+#include "Concorrente.h"
 #include "Risposte.h"
 
 using namespace std;
@@ -20,13 +20,16 @@ int main() {
         nSquadre = MAX_SQUADRE;
     }
 
-    Squadre partecipanti[MAX_SQUADRE];
+    Concorrente partecipanti[MAX_SQUADRE] = {
+        Concorrente(""), Concorrente(""), Concorrente(""), Concorrente(""), Concorrente(""),
+        Concorrente(""), Concorrente(""), Concorrente(""), Concorrente(""), Concorrente("")
+    };
 
     for (int i = 0; i < nSquadre; i++) {
         string nomeSquadra;
         cout << "Inserisci il nome per la Squadra " << i + 1 << ": ";
         cin >> nomeSquadra;
-        partecipanti[i].setNome(nomeSquadra);
+        partecipanti[i] = Concorrente(nomeSquadra);
     }
 
     string nomiCategorie[MAXEL] = { "STORIA", "LOGICA", "INFORMATICA", "SPORT", "ARTE" };
@@ -37,7 +40,6 @@ int main() {
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
             elenco[(i * 5) + j] = Domanda("Domanda di " + nomiCategorie[i] + " valore " + to_string(valoriPunti[j]));
-
         }
     }
 
@@ -71,12 +73,16 @@ int main() {
 
                 cout << elenco[posizione].mostraDomanda() << endl;
 
+                partecipanti[corrente].premiBuzzer();
+
                 Risposta risp;
                 risp.leggiRispota();
 
                 risp.verificaRisposta(elenco[posizione], partecipanti[corrente]);
 
                 elenco[posizione].mostraRisposta();
+
+                partecipanti[corrente].resetBuzzer();
 
                 turno++;
             }

@@ -5,11 +5,11 @@ Concorrente::Concorrente(string nomeIniziale) {
     punteggio = 0;
 }
 
-string Concorrente::getNome() const {
+string Concorrente::getNome() {
     return nome;
 }
 
-int Concorrente::getPunteggio() const {
+int Concorrente::getPunteggio() {
     return punteggio;
 }
 
@@ -25,11 +25,11 @@ void Concorrente::resetBuzzer() {
     buzzer.disattiva();
 }
 
-bool Concorrente::haPremutoBuzzer() const {
+bool Concorrente::haPremutoBuzzer() {
     return buzzer.isAttivo();
 }
 
-bool Concorrente::convalidaScommessa(int cifraScommessa) const {
+bool Concorrente::convalidaScommessa(int cifraScommessa) {
     if (cifraScommessa < 0) {
         return false;
     }

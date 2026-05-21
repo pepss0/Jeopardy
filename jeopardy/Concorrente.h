@@ -13,11 +13,11 @@ private:
 
 public:
     Concorrente(string nomeIniziale);
-    string getNome() const;
-    int getPunteggio() const;
+    string getNome();
+    int getPunteggio();
     void aggiornaPunteggio(int variazione);
     void premiBuzzer();
     void resetBuzzer();
-    bool haPremutoBuzzer() const;
-    bool convalidaScommessa(int cifraScommessa) const;
+    bool haPremutoBuzzer();
+    bool convalidaScommessa(int cifraScommessa);
 };
