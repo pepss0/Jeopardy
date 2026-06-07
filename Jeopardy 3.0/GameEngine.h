@@ -16,6 +16,7 @@ public:
 	void aggiorna_domande(Domanda mat[MAXEL][MAXEL_PUNTI]);
 	void start();
 	Concorrente get_vincitore();
+	string get_classifica();
 	~GameEngine();
 
 private:
@@ -23,4 +24,5 @@ private:
 	Concorrente Partecipanti[MAX_SQUADRE];
 	Domanda Matrice_Domande[MAXEL][MAXEL_PUNTI];
 	int n_partecipanti;
+	int leggi_tra(int min, int max, string msg);
 };

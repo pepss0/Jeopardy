@@ -47,6 +47,8 @@ int main() {
     //inizia la partita
     gioco.start();
 
+    cout << gioco.get_classifica();
+
     Concorrente vincitore = gioco.get_vincitore();
     cout << "il vincitore e':" << endl << vincitore.To_string();
 }

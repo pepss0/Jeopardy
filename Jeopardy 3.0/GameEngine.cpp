@@ -48,7 +48,8 @@ void GameEngine::start()
     bool inCorso = true;
     string domanda = "";
 
-    while (inCorso && turno != (MAXEL * MAXEL_PUNTI)) {
+    while (inCorso && turno != (MAXEL * MAXEL_PUNTI)) 
+    {
 
         int corrente = turno % this->n_partecipanti;
 
@@ -60,76 +61,65 @@ void GameEngine::start()
 
         int sceltaI, sceltaJ;
         
-        cout << "\nScegli Categoria (1-" + to_string(MAXEL) + ") o -1 per uscire: ";
-        cin >> sceltaI;
+        //cout << "\nScegli Categoria (1-" + to_string(MAXEL) + ") o -1 per uscire: ";
+        sceltaI = leggi_tra(1, MAXEL, "Scegli Categoria ");
+        //cin >> sceltaI;
 
-        if (sceltaI == -1) {
-            inCorso = false;
-        }
-        else if (sceltaI >= 1 && sceltaI <= MAXEL) 
+        
+        sceltaJ = leggi_tra(1, MAXEL_PUNTI, "Scegli Difficolta' ");
+
+
+        // HOST TASKS
+        if (this->Matrice_Domande[sceltaI - 1][sceltaJ - 1].get_giaScelta())
         {
-            cout << "Scegli Difficolta' (1-" + to_string(MAXEL_PUNTI) + "): ";
-            cin >> sceltaJ;
-
-            if (sceltaJ >= 1 && sceltaJ <= MAXEL_PUNTI) 
+            cout << "gia scelta" << endl;
+        }
+        else
+        {
+            int soldi_agg = 0;
+            int punteggio_scommessa = this->Tabellone.get_punteggio_domanda(sceltaJ - 1);
+            if (this->Partecipanti[corrente].getPunteggio() > 0)
             {
-                // HOST TASKS
-                if (this->Matrice_Domande[sceltaI - 1][sceltaJ - 1].get_giaScelta())
+                do
                 {
-                    cout << "gia scelta" << endl;
-                }
-                else
-                {
-                    int soldi_agg = 0;
-                    int punteggio_scommessa = this->Tabellone.get_punteggio_domanda(sceltaJ - 1);
-                    if (this->Partecipanti[corrente].getPunteggio() > 0)
-                    {
-                        do
-                        {
-                            cout << "quanto vuoi scommettere in aggiunta (max =" + to_string(this->Partecipanti[corrente].getPunteggio()) + "): " << endl;
-                            cin >> soldi_agg;
-                            if (!this->Partecipanti[corrente].convalidaScommessa(soldi_agg))
-                                cout << "non puoi scommettere soldi aggiuntivi" << endl;
-                        } while (!this->Partecipanti[corrente].convalidaScommessa(soldi_agg));
-                        punteggio_scommessa += soldi_agg;
-                    }
-                    
-                    this->Matrice_Domande[sceltaI - 1][sceltaJ - 1].mostraRisposta();
-
-                    this->Partecipanti[corrente].premiBuzzer();
-
-                    cout << "inserisci domanda: ";
-                    cin >> domanda;
-
-                    if (this->Matrice_Domande[sceltaI - 1][sceltaJ - 1].verfica_Domanda(domanda))
-                    {
-                        //è corretta
-                        cout << "risposta corretta" << endl;
-                        this->Partecipanti[corrente].aggiornaPunteggio(punteggio_scommessa);
-                        //Partecipanti[]=aggiornaPunteggio(this->Matrice_Domande)
-                    }
-                    else
-                    {
-                        //è sbagliata
-                        cout << "risposta sbagliata" << endl;
-                        cout << "la risposta corretta: " << endl;
-                        this->Matrice_Domande[sceltaI - 1][sceltaJ - 1].mostra_Domanda();
-                        this->Partecipanti[corrente].aggiornaPunteggio(-punteggio_scommessa);
-                    }
-                    
-                    this->Partecipanti[corrente].resetBuzzer();
-
-                    turno++;
-                
-                }
+                    //cout << "quanto vuoi scommettere in aggiunta (max =" + to_string(this->Partecipanti[corrente].getPunteggio()) + "): " << endl;
+                    soldi_agg = leggi_tra(0, this->Partecipanti[corrente].getPunteggio(), "quanto vuoi scommettere in aggiunta ");
+                    //cin >> soldi_agg;
+                    if (!this->Partecipanti[corrente].convalidaScommessa(soldi_agg))
+                        cout << "non puoi scommettere soldi aggiuntivi" << endl;
+                } while (!this->Partecipanti[corrente].convalidaScommessa(soldi_agg));
+                punteggio_scommessa += soldi_agg;
             }
+
+            cout << this->Matrice_Domande[sceltaI - 1][sceltaJ - 1].mostraRisposta();
+
+            this->Partecipanti[corrente].premiBuzzer();
+
+            cout << "inserisci domanda: ";
+            cin >> domanda;
+
+            if (this->Matrice_Domande[sceltaI - 1][sceltaJ - 1].verfica_Domanda(domanda))
+            {
+                //è corretta
+                cout << "risposta corretta" << endl;
+                this->Partecipanti[corrente].aggiornaPunteggio(punteggio_scommessa);
+                //Partecipanti[]=aggiornaPunteggio(this->Matrice_Domande)
+            }
+            else
+            {
+                //è sbagliata
+                cout << "risposta sbagliata" << endl;
+                cout << "la risposta corretta: " << endl;
+                cout << this->Matrice_Domande[sceltaI - 1][sceltaJ - 1].mostra_Domanda();
+                this->Partecipanti[corrente].aggiornaPunteggio(-punteggio_scommessa);
+            }
+
+            this->Partecipanti[corrente].resetBuzzer();
+
+            turno++;
         }
     }
-
-    cout << "--- CLASSIFICA FINALE ---" << endl;
-    for (int i = 0; i < this->n_partecipanti; i++) {
-        cout << Partecipanti[i].getNome() << ": " << Partecipanti[i].getPunteggio() << " punti" << endl;
-    }
+    
 }
 
 Concorrente GameEngine::get_vincitore()
@@ -143,8 +133,31 @@ Concorrente GameEngine::get_vincitore()
 	return vincitore;
 }
 
+string GameEngine::get_classifica()
+{
+    string msg = "";
+    msg += "--- CLASSIFICA FINALE ---\n";
+    //ordinamento classifica
+    
+    for (int i = 0; i < this->n_partecipanti; i++) {
+        msg += Partecipanti[i].getNome() + ": " + to_string(Partecipanti[i].getPunteggio()) + " punti\n";
+    }
+    return msg;
+}
+
 GameEngine::~GameEngine()
 {
+}
+
+int GameEngine::leggi_tra(int min, int max, string msg)
+{
+    int num = 0;
+    do
+    {
+        cout << msg << " tra " << min << " e " << max << " : ";
+        cin >> num;
+    } while (num > max || num < min);
+    return num;
 }
 //string nomiCategorie[MAXEL] = { "STORIA", "LOGICA", "INFORMATICA", "SPORT", "ARTE" };
 //int valoriPunti[MAXEL] = { 200, 400, 600, 800, 1000 };

@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Jeopardy 3.0.vcxproj" />
+  <Project Path="Jeopardy 3.0.vcxproj" Id="48797baf-3009-48bc-9871-c177c72498a9" />
 </Solution>

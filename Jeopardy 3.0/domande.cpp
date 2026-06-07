@@ -1,5 +1,6 @@
 #include "domande.h"
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -28,20 +29,24 @@ bool Domanda::verfica_Domanda(string r)
     }
 }
 
-void Domanda::mostraRisposta()
+string Domanda::mostraRisposta()
 {
+    string msg = "";
     if (!giaScelta)
-        cout << "RISPOSTA: " << this->testo_risposta << endl;
+        msg += "RISPOSTA: " + this->testo_risposta + "\n";
     else
-        cout << "risposta gia' scelta" << endl;
+        msg += "risposta gia' scelta\n";
+    return msg;
 }
 
-void Domanda::mostra_Domanda()
+string Domanda::mostra_Domanda()
 {
+    string msg = "";
     if (this->giaScelta)
-        cout << "DOMANDA: " << this->domanda_corretta << endl;
+        msg += "DOMANDA: " + this->domanda_corretta + "\n";
     else
-        cout << "devi prima provare ad indovinare la domanda" << endl;
+        msg+= "devi prima provare ad indovinare la domanda\n";
+    return msg;
 }
 
 bool Domanda::get_giaScelta()

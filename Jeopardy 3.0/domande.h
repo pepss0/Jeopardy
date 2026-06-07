@@ -15,8 +15,8 @@ public:
     Domanda();
     Domanda(string testo_risposta, string domanda_corretta);
     bool verfica_Domanda(string r);
-    void mostraRisposta();
-    void mostra_Domanda();
+    string mostraRisposta();
+    string mostra_Domanda();
     bool get_giaScelta();
 };
 
