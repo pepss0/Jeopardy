@@ -137,8 +137,7 @@ string GameEngine::get_classifica()
 {
     string msg = "";
     msg += "--- CLASSIFICA FINALE ---\n";
-    //ordinamento classifica
-    
+    Sort();
     for (int i = 0; i < this->n_partecipanti; i++) {
         msg += Partecipanti[i].getNome() + ": " + to_string(Partecipanti[i].getPunteggio()) + " punti\n";
     }
@@ -158,6 +157,21 @@ int GameEngine::leggi_tra(int min, int max, string msg)
         cin >> num;
     } while (num > max || num < min);
     return num;
+}
+void GameEngine::Sort()
+{
+    //ordinamento classifica
+    for (int i = 1; i < this->n_partecipanti; i++)
+    {
+        Concorrente Temp = this->Partecipanti[i];
+        int j = i - 1;
+        while (j >= 0 && Temp.getPunteggio() > this->Partecipanti[j].getPunteggio())
+        {
+            Partecipanti[j + 1] = Partecipanti[j];
+            j--;
+        }
+        Partecipanti[j + 1] = Temp;
+    }
 }
 //string nomiCategorie[MAXEL] = { "STORIA", "LOGICA", "INFORMATICA", "SPORT", "ARTE" };
 //int valoriPunti[MAXEL] = { 200, 400, 600, 800, 1000 };

@@ -25,4 +25,5 @@ private:
 	Domanda Matrice_Domande[MAXEL][MAXEL_PUNTI];
 	int n_partecipanti;
 	int leggi_tra(int min, int max, string msg);
+	void Sort();
 };
