@@ -23,6 +23,8 @@ mono_crash.*
 [Rr]elease/
 [Rr]eleases/
 x64/
+# Consenti il commit della cartella x64
+!x64/**/*.dll
 x86/
 [Ww][Ii][Nn]32/
 [Aa][Rr][Mm]/
@@ -36,6 +38,9 @@ bld/
 
 # Build results on 'Bin' directories
 **/[Bb]in/*
+!SFML-2.6.1/bin/
+!SFML-2.6.1/bin/*.dll
+
 # Uncomment if you have tasks that rely on *.refresh files to move binaries
 # (https://github.com/github/gitignore/pull/3736)
 #!**/[Bb]in/*.refresh
@@ -416,12 +421,4 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
-
-# Consenti il commit della cartella x64
-!x64/
-!x64/**
-
-# Consenti il commit della cartella bin di SFML
-!SFML-2.6.1/
-!SFML-2.6.1/bin/
-!SFML-2.6.1/bin/**
+/jeopardy_SFML/Project1/SFML-2.6.1/bin/openal32.dll
