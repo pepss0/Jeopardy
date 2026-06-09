@@ -416,3 +416,12 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Consenti il commit della cartella x64
+!x64/
+!x64/**
+
+# Consenti il commit della cartella bin di SFML
+!SFML-2.6.1/
+!SFML-2.6.1/bin/
+!SFML-2.6.1/bin/**
